@@ -1,16 +1,23 @@
 # Changelog
 
-## 0.1.0 (2023-10-14)
+## 0.2.0 (2023-10-14)
 
-### 0 - Getting started
+### 2 - Templates
 
-- Generate the angular project
-- Add some styles
-- Implement Unit tests
-- Implement End-to-end tests
-- Implement Lint
+- Implement Menu Component
+- Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
+
+  ## 0.1.0 (2023-10-14)
+
+  ### 0 - Getting started
+
+  - Generate the angular project
+  - Add some styles
+  - Implement Unit tests
+  - Implement End-to-end tests
+  - Implement Lint
 
 <details>
