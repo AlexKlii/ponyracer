@@ -1,16 +1,23 @@
 # Changelog
 
-## 0.7.0 (2023-10-14)
+## 0.8.0 (2023-10-14)
 
-### 7 - Custom pipe with date-fns
+### 8 - Race service
 
-- Add `date-fns` dependencie
-- Implement `FromNowPipe` using `date-fns`
+- Implement `RaceService`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.7.0 (2023-10-14)
+
+  ### 7 - Custom pipe with date-fns
+
+  - Add `date-fns` dependencie
+  - Implement `FromNowPipe` using `date-fns`
+  - Update e2e and unit test
+  
   ## 0.6.0 (2023-10-14)
 
   ### 6 - Using pipes
