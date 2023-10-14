@@ -1,15 +1,23 @@
 # Changelog
 
-## 0.3.0 (2023-10-14)
+## 0.4.0 (2023-10-14)
 
-### 3 - List of races
+### 4 - Race detail
 
-- Implement Races Component
+- Implement Race Component
+- Add PonyModel
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.3.0 (2023-10-14)
+
+  ### 3 - List of races
+
+  - Implement Races Component
+  - Update e2e and unit test
+  
   ## 0.2.0 (2023-10-14)
 
   ### 2 - Templates
