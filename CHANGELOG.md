@@ -1,15 +1,23 @@
 # Changelog
 
-## 0.6.0 (2023-10-14)
+## 0.7.0 (2023-10-14)
 
-### 6 - Using pipes
+### 7 - Custom pipe with date-fns
 
-- Update `RaceComponent` to display race start date using pipe
+- Add `date-fns` dependencie
+- Implement `FromNowPipe` using `date-fns`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.6.0 (2023-10-14)
+
+  ### 6 - Using pipes
+
+  - Update `RaceComponent` to display race start date using pipe
+  - Update e2e and unit test
+  
   ## 0.5.0 (2023-10-14)
 
   ### 5 - Pony component
