@@ -1,6 +1,10 @@
-# Ponyracer
+# PonyRacer Angular Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+
+## Explore Angular development with Ninja Squad's PonyRacer project.
+
+This comprehensive learning resource takes you step-by-step through building a feature-rich application, covering components, services, routing, dependency injection, modules, HTTP, WebSockets, lazy loading, authentication, forms, validation, performance tips, production deployment, and more.
 
 ## Development server
 
