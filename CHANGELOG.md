@@ -1,16 +1,24 @@
 # Changelog
 
-## 0.4.0 (2023-10-14)
+## 0.5.0 (2023-10-14)
 
-### 4 - Race detail
+### 5 - Pony component
 
-- Implement Race Component
-- Add PonyModel
+- Implement Pony Component
+- Add images for ponies in `assets/images`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.4.0 (2023-10-14)
+
+  ### 4 - Race detail
+
+  - Implement Race Component
+  - Add PonyModel
+  - Update e2e and unit test
+  
   ## 0.3.0 (2023-10-14)
 
   ### 3 - List of races
