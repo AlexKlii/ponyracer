@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { UserService } from '../user.service';
+import { UserModel } from '../models/user.model';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'pr-menu',
@@ -11,8 +14,13 @@ import { RouterLink } from '@angular/router';
 })
 export class MenuComponent {
   navbarCollapsed: boolean = true;
+  user: UserModel | null = null;
 
-  toggleNavbar() {
+  constructor(private userService: UserService) {
+    this.userService.userEvents.pipe(takeUntilDestroyed()).subscribe(user => (this.user = user));
+  }
+
+  toggleNavbar(): void {
     this.navbarCollapsed = !this.navbarCollapsed;
   }
 }
