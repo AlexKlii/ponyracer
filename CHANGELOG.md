@@ -1,14 +1,21 @@
 # Changelog
 
-## 0.8.0 (2023-10-14)
+## 0.9.0 (2023-10-15)
 
-### 8 - Race service
+### 10 - Observables with RxJS
 
-- Implement `RaceService`
-- Update e2e and unit test
+- Update `RaceService` to implement Observables
+- Update unit test
 
 <details>
   <summary>See old changelogs</summary>
+
+  ## 0.8.0 (2023-10-14)
+
+  ### 8 - Race service
+
+  - Implement `RaceService`
+  - Update e2e and unit test
 
   ## 0.7.0 (2023-10-14)
 
