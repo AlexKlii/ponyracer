@@ -1,15 +1,22 @@
 # Changelog
 
-## 0.16.0 (2023-10-15)
+## 0.17.0 (2023-10-15)
 
-### 18 - Logged home
+### 19 - Remember me
 
-- Update `MenuComponent` and `HomeComponent` to display links compared to the user
+- Implement `retrieveUser` and `storeLoggedInUser` methods in the `UserService`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.16.0 (2023-10-15)
+
+  ### 18 - Logged home
+
+  - Update `MenuComponent` and `HomeComponent` to display links compared to the user
+  - Update e2e and unit test
+  
   ## 0.15.0 (2023-10-15)
 
   ### 17 - Display the user
