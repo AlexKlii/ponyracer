@@ -1,15 +1,23 @@
 # Changelog
 
-## 0.17.0 (2023-10-15)
+## 0.18.0 (2023-10-15)
 
-### 19 - Remember me
+### 20 - Logout
 
-- Implement `retrieveUser` and `storeLoggedInUser` methods in the `UserService`
+- Add a `logout` method in the `UserService`
+- Implement `logout` method in the `MenuComponent`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.17.0 (2023-10-15)
+
+  ### 19 - Remember me
+
+  - Implement `retrieveUser` and `storeLoggedInUser` methods in the `UserService`
+  - Update e2e and unit test
+  
   ## 0.16.0 (2023-10-15)
 
   ### 18 - Logged home
