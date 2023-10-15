@@ -15,6 +15,6 @@ export class RacesComponent {
   races: Array<RaceModel> = [];
 
   constructor(private raceService: RaceService) {
-    this.races = this.raceService.list();
+    this.raceService.list().subscribe((races: Array<RaceModel>) => (this.races = races));
   }
 }
