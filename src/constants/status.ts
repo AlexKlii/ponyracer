@@ -1,0 +1,1 @@
+export const PENDING_RACE_STATUS = 'PENDING';

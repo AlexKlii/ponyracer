@@ -1,16 +1,24 @@
 # Changelog
 
-## 0.14.0 (2023-10-15)
+## 0.15.0 (2023-10-15)
 
-### 16 - Login form
+### 17 - Display the user
 
-- Implement `LoginComponent`
-- Add `authenticate` method in the `UserService`
-- Update `HomeComponent`
+- Update `UserService` to emit the connected user
+- Update `MenuComponent` to display the connected user
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
+
+  ## 0.14.0 (2023-10-15)
+
+  ### 16 - Login form
+
+  - Implement `LoginComponent`
+  - Add `authenticate` method in the `UserService`
+  - Update `HomeComponent`
+  - Update e2e and unit test
 
   ## 0.13.0 (2023-10-15)
 
