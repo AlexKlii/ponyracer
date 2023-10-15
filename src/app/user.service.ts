@@ -14,4 +14,8 @@ export class UserService {
     const body = { login, password, birthYear };
     return this.http.post<UserModel>(`${environment.base_url}/api/users`, body);
   }
+
+  authenticate(credentials: { login: string; password: string }): Observable<UserModel> {
+    return this.http.post<UserModel>(`${environment.base_url}/api/users/authentication`, credentials);
+  }
 }

@@ -1,17 +1,25 @@
 # Changelog
 
-## 0.13.0 (2023-10-15)
+## 0.14.0 (2023-10-15)
 
-### 15 - Custom validators in forms
+### 16 - Login form
 
-
-- Add `UserModel`
-- Implement `UserService` to register a user
+- Implement `LoginComponent`
+- Add `authenticate` method in the `UserService`
+- Update `HomeComponent`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.13.0 (2023-10-15)
+
+  ### 15 - Custom validators in forms
+
+  - Add `UserModel`
+  - Implement `UserService` to register a user
+  - Update e2e and unit test
+  
   ## 0.12.0 (2023-10-15)
 
   ### 14 - Register form
