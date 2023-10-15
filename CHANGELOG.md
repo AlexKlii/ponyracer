@@ -1,17 +1,24 @@
 # Changelog
 
-## 0.11.0 (2023-10-15)
+## 0.12.0 (2023-10-15)
 
-### 12 - Router
+### 14 - Register form
 
-- Update `AppComponent` to implement `RouterOutlet`
-- Implement `HomeComponent`
-- Update `MenuComponent` to implement `RouterLink`
+- Implement `RegisterComponent`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.11.0 (2023-10-15)
+
+  ### 12 - Router
+
+  - Update `AppComponent` to implement `RouterOutlet`
+  - Implement `HomeComponent`
+  - Update `MenuComponent` to implement `RouterLink`
+  - Update e2e and unit test
+  
   ## 0.10.0 (2023-10-15)
 
   ### 11 - HTTP
