@@ -1,15 +1,25 @@
 # Changelog
 
-## 0.18.0 (2023-10-15)
+## 0.19.0 (2023-10-15)
 
-### 20 - Logout
+### 22 - HTTP with authentication
 
-- Add a `logout` method in the `UserService`
-- Implement `logout` method in the `MenuComponent`
+- Implement `jwtInterceptor` to set request headers when connected
+- Add `getCurrentUser` method in the `UserService`
+- Refactor `environments` files
+- fix `angular.json` file
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
+
+  ## 0.18.0 (2023-10-15)
+
+  ### 20 - Logout
+
+  - Add a `logout` method in the `UserService`
+  - Implement `logout` method in the `MenuComponent`
+  - Update e2e and unit test
 
   ## 0.17.0 (2023-10-15)
 
