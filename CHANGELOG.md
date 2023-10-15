@@ -1,17 +1,26 @@
 # Changelog
 
-## 0.10.0 (2023-10-15)
+## 0.11.0 (2023-10-15)
 
-### 11 - HTTP
+### 12 - Router
 
-- Add `status` constants file
-- Add `environment` files
-- Update `RaceService` to implement Http request
+- Update `AppComponent` to implement `RouterOutlet`
+- Implement `HomeComponent`
+- Update `MenuComponent` to implement `RouterLink`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.10.0 (2023-10-15)
+
+  ### 11 - HTTP
+
+  - Add `status` constants file
+  - Add `environment` files
+  - Update `RaceService` to implement Http request
+  - Update e2e and unit test
+  
   ## 0.9.0 (2023-10-15)
 
   ### 10 - Observables with RxJS
