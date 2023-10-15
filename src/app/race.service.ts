@@ -12,6 +12,6 @@ export class RaceService {
   constructor(private http: HttpClient) {}
 
   list(): Observable<Array<RaceModel>> {
-    return this.http.get<Array<RaceModel>>(`${environment.base_url}/api/races`, { params: { status: PENDING_RACE_STATUS } });
+    return this.http.get<Array<RaceModel>>(`${environment.baseUrl}/api/races`, { params: { status: PENDING_RACE_STATUS } });
   }
 }

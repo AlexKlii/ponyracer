@@ -16,12 +16,12 @@ export class UserService {
 
   register(login: string, password: string, birthYear: number): Observable<UserModel> {
     const body = { login, password, birthYear };
-    return this.http.post<UserModel>(`${environment.base_url}/api/users`, body);
+    return this.http.post<UserModel>(`${environment.baseUrl}/api/users`, body);
   }
 
   authenticate(credentials: { login: string; password: string }): Observable<UserModel> {
     return this.http
-      .post<UserModel>(`${environment.base_url}/api/users/authentication`, credentials)
+      .post<UserModel>(`${environment.baseUrl}/api/users/authentication`, credentials)
       .pipe(tap((user: UserModel) => this.storeLoggedInUser(user)));
   }
 
@@ -41,5 +41,9 @@ export class UserService {
   logout(): void {
     this.userEvents.next(null);
     window.localStorage.removeItem('rememberMe');
+  }
+
+  getCurrentUser(): UserModel | null {
+    return this.userEvents.getValue();
   }
 }

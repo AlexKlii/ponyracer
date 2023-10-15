@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
-  name: 'Production Environment',
+  production: false,
+  name: 'Development Environment',
   baseUrl: 'https://ponyracer.ninja-squad.com'
 };
