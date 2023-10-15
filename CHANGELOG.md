@@ -1,14 +1,23 @@
 # Changelog
 
-## 0.12.0 (2023-10-15)
+## 0.13.0 (2023-10-15)
 
-### 14 - Register form
+### 15 - Custom validators in forms
 
-- Implement `RegisterComponent`
+
+- Add `UserModel`
+- Implement `UserService` to register a user
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
+
+  ## 0.12.0 (2023-10-15)
+
+  ### 14 - Register form
+
+  - Implement `RegisterComponent`
+  - Update e2e and unit test
 
   ## 0.11.0 (2023-10-15)
 
