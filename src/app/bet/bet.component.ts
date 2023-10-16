@@ -29,10 +29,17 @@ export class BetComponent {
   betOnPony(pony: PonyModel): void {
     if (this.raceModel) {
       this.betFailed = false;
-      this.raceService.bet(this.raceModel.id, pony.id).subscribe({
-        next: (race: RaceModel) => (this.raceModel = race),
-        error: () => (this.betFailed = true)
-      });
+      if (this.raceModel.betPonyId === pony.id) {
+        this.raceService.cancelBet(this.raceModel.id).subscribe({
+          next: () => (this.raceModel!.betPonyId = undefined),
+          error: () => (this.betFailed = true)
+        });
+      } else {
+        this.raceService.bet(this.raceModel.id, pony.id).subscribe({
+          next: (race: RaceModel) => (this.raceModel = race),
+          error: () => (this.betFailed = true)
+        });
+      }
     }
   }
 
