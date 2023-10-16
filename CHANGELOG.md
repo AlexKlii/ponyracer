@@ -1,19 +1,27 @@
 # Changelog
 
-## 0.25.0 (2023-10-16)
+## 0.26.0 (2023-10-16)
 
-### 28 - Boost a pony
+### 29 - Reactive user score
 
-- Add `boost` method to `RaceService`
-- Update `LiveComponent` to boost a pony
-- Update `PonyComponent` to display the boosted pony
-- Update `PonyWithPositionModel`
-- Add images for boosted ponies in `assets/images`
+- Add `scoreUpdates` method to `UserService`
+- Update `MenuComponent` to implement reactive user score
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.25.0 (2023-10-16)
+
+  ### 28 - Boost a pony
+
+  - Add `boost` method to `RaceService`
+  - Update `LiveComponent` to boost a pony
+  - Update `PonyComponent` to display the boosted pony
+  - Update `PonyWithPositionModel`
+  - Add images for boosted ponies in `assets/images`
+  - Update e2e and unit test
+  
   ## 0.24.0 (2023-10-16)
 
   ### 27 - Observable tips and tricks
