@@ -1,16 +1,26 @@
 # Changelog
 
-## 0.21.0 (2023-10-16)
+## 0.22.0 (2023-10-16)
 
-### 24 - Cancel a bet
+### 25 - Live race
 
-- Add `cancelBet` method to `RaceService`
-- Implement this new method to `BetComponent`
+- Implement `LiveComponent`
+- Add `live` method to `RaceService`
+- Update `getPonyImageUrl` from `PonyComponent`
+- Add images for running ponies in `assets/images`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.21.0 (2023-10-16)
+
+  ### 24 - Cancel a bet
+
+  - Add `cancelBet` method to `RaceService`
+  - Implement this new method to `BetComponent`
+  - Update e2e and unit test
+  
   ## 0.20.0 (2023-10-16)
 
   ### 23 - Bet on a pony

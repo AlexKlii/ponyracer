@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RaceModel } from '../models/race.model';
 import { RaceService } from '../race.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FromNowPipe } from '../from-now.pipe';
 import { PonyComponent } from '../pony/pony.component';
 import { PonyModel } from '../models/pony.model';
@@ -10,7 +10,7 @@ import { PonyModel } from '../models/pony.model';
 @Component({
   selector: 'pr-bet',
   standalone: true,
-  imports: [CommonModule, FromNowPipe, PonyComponent],
+  imports: [CommonModule, FromNowPipe, PonyComponent, RouterLink],
   templateUrl: './bet.component.html',
   styleUrls: ['./bet.component.css']
 })
