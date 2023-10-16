@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { ActivatedRoute, provideRouter, convertToParamMap } from '@angular/router';
+import { ActivatedRoute, convertToParamMap, provideRouter } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { of, throwError } from 'rxjs';
 import { formatDistanceToNowStrict, parseISO } from 'date-fns';
@@ -16,7 +16,7 @@ describe('BetComponent', () => {
   const activatedRoute = { snapshot: { paramMap: convertToParamMap({ raceId: 1 }) } };
 
   beforeEach(() => {
-    raceService = jasmine.createSpyObj<RaceService>('RaceService', ['get', 'bet']);
+    raceService = jasmine.createSpyObj<RaceService>('RaceService', ['get', 'bet', 'cancelBet']);
     raceService.get.and.returnValue(of(race));
     TestBed.configureTestingModule({
       providers: [provideRouter([]), { provide: RaceService, useValue: raceService }, { provide: ActivatedRoute, useValue: activatedRoute }]
@@ -156,5 +156,37 @@ describe('BetComponent', () => {
     alertButton.dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(element.querySelector('.alert.alert-danger')).withContext('Clicking on the button should close the alert').toBeNull();
+  });
+
+  it('should cancel a bet', () => {
+    const fixture = TestBed.createComponent(BetComponent);
+    raceService.cancelBet.and.returnValue(of(undefined));
+
+    const component = fixture.componentInstance;
+    component.raceModel = { id: 2, betPonyId: 1, name: 'Lyon', ponies: [], startInstant: '2020-02-18T08:02:00Z' };
+
+    const pony = { id: 1 } as PonyModel;
+    component.betOnPony(pony);
+
+    expect(raceService.cancelBet).toHaveBeenCalledWith(2);
+    expect(component.raceModel.betPonyId).toBeFalsy();
+  });
+
+  it('should display a message if canceling a bet fails', () => {
+    const fixture = TestBed.createComponent(BetComponent);
+    fixture.detectChanges();
+
+    raceService.cancelBet.and.callFake(() => throwError(() => new Error('Oops')));
+
+    const component = fixture.componentInstance;
+    component.raceModel = { id: 2, betPonyId: 1, name: 'Lyon', ponies: [], startInstant: '2020-02-18T08:02:00Z' };
+    expect(component.betFailed).toBe(false);
+
+    const pony = { id: 1 } as PonyModel;
+    component.betOnPony(pony);
+
+    expect(raceService.cancelBet).toHaveBeenCalledWith(2);
+    expect(component.raceModel.betPonyId).toBe(1);
+    expect(component.betFailed).toBe(true);
   });
 });

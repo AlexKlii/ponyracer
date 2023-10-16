@@ -1,23 +1,31 @@
 # Changelog
 
-## 0.20.0 (2023-10-16)
+## 0.21.0 (2023-10-16)
 
-### 23 - Bet on a pony
+### 24 - Cancel a bet
 
-- Add `get` and `bet` method in `RaceService`
-- Update `RaceModel`
-- Implement `BetComponent`
+- Add `cancelBet` method to `RaceService`
+- Implement this new method to `BetComponent`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.20.0 (2023-10-16)
+
+  ### 23 - Bet on a pony
+
+  - Add `get` and `bet` method to `RaceService`
+  - Update `RaceModel`
+  - Implement `BetComponent`
+  - Update e2e and unit test
+  
   ## 0.19.0 (2023-10-15)
 
   ### 22 - HTTP with authentication
 
   - Implement `jwtInterceptor` to set request headers when connected
-  - Add `getCurrentUser` method in the `UserService`
+  - Add `getCurrentUser` method to `UserService`
   - Refactor `environments` files
   - fix `angular.json` file
   - Update e2e and unit test
@@ -26,15 +34,15 @@
 
   ### 20 - Logout
 
-  - Add a `logout` method in the `UserService`
-  - Implement `logout` method in the `MenuComponent`
+  - Add a `logout` method to `UserService`
+  - Implement `logout` method to `MenuComponent`
   - Update e2e and unit test
 
   ## 0.17.0 (2023-10-15)
 
   ### 19 - Remember me
 
-  - Implement `retrieveUser` and `storeLoggedInUser` methods in the `UserService`
+  - Implement `retrieveUser` and `storeLoggedInUser` methods to `UserService`
   - Update e2e and unit test
   
   ## 0.16.0 (2023-10-15)
@@ -57,7 +65,7 @@
   ### 16 - Login form
 
   - Implement `LoginComponent`
-  - Add `authenticate` method in the `UserService`
+  - Add `authenticate` method to `UserService`
   - Update `HomeComponent`
   - Update e2e and unit test
 
