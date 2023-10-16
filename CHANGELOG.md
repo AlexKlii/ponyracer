@@ -1,18 +1,27 @@
 # Changelog
 
-## 0.19.0 (2023-10-15)
+## 0.20.0 (2023-10-16)
 
-### 22 - HTTP with authentication
+### 23 - Bet on a pony
 
-- Implement `jwtInterceptor` to set request headers when connected
-- Add `getCurrentUser` method in the `UserService`
-- Refactor `environments` files
-- fix `angular.json` file
+- Add `get` and `bet` method in `RaceService`
+- Update `RaceModel`
+- Implement `BetComponent`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.19.0 (2023-10-15)
+
+  ### 22 - HTTP with authentication
+
+  - Implement `jwtInterceptor` to set request headers when connected
+  - Add `getCurrentUser` method in the `UserService`
+  - Refactor `environments` files
+  - fix `angular.json` file
+  - Update e2e and unit test
+  
   ## 0.18.0 (2023-10-15)
 
   ### 20 - Logout
