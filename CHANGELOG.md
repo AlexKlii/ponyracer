@@ -1,16 +1,23 @@
 # Changelog
 
-## 0.26.0 (2023-10-16)
+## 0.27.0 (2023-10-16)
 
-### 29 - Reactive user score
+### 31 - Protected routes with guards
 
-- Add `scoreUpdates` method to `UserService`
-- Update `MenuComponent` to implement reactive user score
+- Implement `loggedInGuard` on `races` routes
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.26.0 (2023-10-16)
+
+  ### 29 - Reactive user score
+
+  - Add `scoreUpdates` method to `UserService`
+  - Update `MenuComponent` to implement reactive user score
+  - Update e2e and unit test
+  
   ## 0.25.0 (2023-10-16)
 
   ### 28 - Boost a pony
