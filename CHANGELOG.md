@@ -1,19 +1,28 @@
 # Changelog
 
-## 0.23.0 (2023-10-16)
+## 0.24.0 (2023-10-16)
 
-### 26 - WebSockets
+### 27 - Observable tips and tricks
 
-- Add `wsBaseUrl` environment variable
-- Add `app.token.ts` file
-- Add `LiveRaceModel` model
-- Implement `WsService`
-- Update `live` method from `RaceService` 
+- Update `LiveComponent` to implement race status
+- Update `live` method from `RaceService`
+- Update `RaceModel`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.23.0 (2023-10-16)
+
+  ### 26 - WebSockets
+
+  - Add `wsBaseUrl` environment variable
+  - Add `app.token.ts` file
+  - Add `LiveRaceModel` model
+  - Implement `WsService`
+  - Update `live` method from `RaceService` 
+  - Update e2e and unit test
+  
   ## 0.22.0 (2023-10-16)
 
   ### 25 - Live race

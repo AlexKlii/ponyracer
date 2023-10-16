@@ -1,1 +1,3 @@
 export const PENDING_RACE_STATUS = 'PENDING';
+export const RUNNING_RACE_STATUS = 'RUNNING';
+export const FINISHED_RACE_STATUS = 'FINISHED';
