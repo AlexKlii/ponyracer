@@ -1,17 +1,28 @@
 # Changelog
 
-## 0.24.0 (2023-10-16)
+## 0.25.0 (2023-10-16)
 
-### 27 - Observable tips and tricks
+### 28 - Boost a pony
 
-- Update `LiveComponent` to implement race status
-- Update `live` method from `RaceService`
-- Update `RaceModel`
+- Add `boost` method to `RaceService`
+- Update `LiveComponent` to boost a pony
+- Update `PonyComponent` to display the boosted pony
+- Update `PonyWithPositionModel`
+- Add images for boosted ponies in `assets/images`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.24.0 (2023-10-16)
+
+  ### 27 - Observable tips and tricks
+
+  - Update `LiveComponent` to implement race status
+  - Update `live` method from `RaceService`
+  - Update `RaceModel`
+  - Update e2e and unit test
+  
   ## 0.23.0 (2023-10-16)
 
   ### 26 - WebSockets
