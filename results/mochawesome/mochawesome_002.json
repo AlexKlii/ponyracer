@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2023-10-16T07:32:07.757Z",
-    "end": "2023-10-16T07:32:08.171Z",
-    "duration": 414,
+    "start": "2023-10-16T08:19:44.776Z",
+    "end": "2023-10-16T08:19:46.541Z",
+    "duration": 1765,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "01738170-1709-48b4-ae8e-976f918f2477",
+      "uuid": "edafe47f-a596-4ded-b671-45efc505270c",
       "title": "",
       "fullFile": "cypress/e2e/live.cy.ts",
       "file": "cypress/e2e/live.cy.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "70652d6d-d5f8-4d31-bf7c-245e09728798",
+          "uuid": "2c04cfcf-e7b1-4634-871e-b3bbcd51df1e",
           "title": "Live",
           "fullFile": "",
           "file": "",
@@ -38,29 +38,29 @@
               "title": "should display a live race",
               "fullTitle": "Live should display a live race",
               "timedOut": null,
-              "duration": 390,
+              "duration": 1723,
               "state": "passed",
               "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "storeUserInLocalStorage();\ncy.visit('/races/12/live');\ncy.wait('@getPendingRace');\ncy.get('h1').should('contain', 'Paris');",
+              "code": "storeUserInLocalStorage();\nconst { fakeWS, wsOptions } = buildFakeWS();\ncy.visit('/races', wsOptions);\ncy.wait('@getRaces');\n// go to bet page for the first race\ncy.get('.btn-primary').first().click();\ncy.wait('@getRace');\n// bet on first pony\ncy.get('img').first().click();\ncy.wait('@betRace');\n// emulate a pending race\ncy.intercept('GET', 'api/races/12', {\n    ...race,\n    betPonyId: 2,\n    status: 'PENDING'\n}).as('getPendingRace');\n// go to live\ncy.get('.btn-primary').first().click();\ncy.location('pathname').should('eq', '/races/12/live');\ncy.wait('@getPendingRace');\ncy.wait(1000);\nlet angular;\ncy.window().then((win) => (angular = win.ng));\nlet document;\ncy.document().then(doc => (document = doc));\n// WebSocket connection created\ncy.get('@ws')\n    .should('be.called')\n    .then(() => {\n    fakeWS.emulateRace({\n        ponies: [\n            { id: 1, name: 'Gentle Pie', color: 'YELLOW', position: 30 },\n            { id: 2, name: 'Big Soda', color: 'ORANGE', position: 80 },\n            { id: 3, name: 'Gentle Bottle', color: 'PURPLE', position: 70 },\n            { id: 4, name: 'Superb Whiskey', color: 'GREEN', position: 60 },\n            { id: 5, name: 'Fast Rainbow', color: 'BLUE', position: 30 }\n        ],\n        status: 'RUNNING'\n    });\n    // the component can be inside ng-component if it has no selector\n    const element = document.querySelector('pr-live') || document.querySelector('ng-component');\n    const liveComponent = angular.getComponent(element);\n    angular.applyChanges(liveComponent);\n});\n// race detail should be displayed\ncy.get('h1').should('contain', 'Paris');\ncy.get('img').should('have.length', 5);",
               "err": {},
-              "uuid": "90c8f280-3838-456a-aa3d-244485cbd487",
-              "parentUUID": "70652d6d-d5f8-4d31-bf7c-245e09728798",
+              "uuid": "172f6b42-667b-488b-aa73-90bc94bf9818",
+              "parentUUID": "2c04cfcf-e7b1-4634-871e-b3bbcd51df1e",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "90c8f280-3838-456a-aa3d-244485cbd487"
+            "172f6b42-667b-488b-aa73-90bc94bf9818"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 390,
+          "duration": 1723,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

@@ -1,18 +1,29 @@
 # Changelog
 
-## 0.22.0 (2023-10-16)
+## 0.23.0 (2023-10-16)
 
-### 25 - Live race
+### 26 - WebSockets
 
-- Implement `LiveComponent`
-- Add `live` method to `RaceService`
-- Update `getPonyImageUrl` from `PonyComponent`
-- Add images for running ponies in `assets/images`
+- Add `wsBaseUrl` environment variable
+- Add `app.token.ts` file
+- Add `LiveRaceModel` model
+- Implement `WsService`
+- Update `live` method from `RaceService` 
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.22.0 (2023-10-16)
+
+  ### 25 - Live race
+
+  - Implement `LiveComponent`
+  - Add `live` method to `RaceService`
+  - Update `getPonyImageUrl` from `PonyComponent`
+  - Add images for running ponies in `assets/images`
+  - Update e2e and unit test
+    
   ## 0.21.0 (2023-10-16)
 
   ### 24 - Cancel a bet

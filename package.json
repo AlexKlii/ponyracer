@@ -27,6 +27,7 @@
     "date-fns": "2.30.0",
     "rxjs": "7.8.1",
     "tslib": "2.6.1",
+    "webstomp-client": "1.2.6",
     "zone.js": "0.13.1"
   },
   "devDependencies": {
