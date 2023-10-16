@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
 import { UserModel } from '../models/user.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { EMPTY, catchError, of, switchMap, concat } from 'rxjs';
 
 @Component({
   selector: 'pr-menu',
@@ -20,7 +21,12 @@ export class MenuComponent {
     private userService: UserService,
     private router: Router
   ) {
-    this.userService.userEvents.pipe(takeUntilDestroyed()).subscribe(user => (this.user = user));
+    this.userService.userEvents
+      .pipe(
+        takeUntilDestroyed(),
+        switchMap(user => (user ? concat(of(user), this.userService.scoreUpdates(user.id).pipe(catchError(() => EMPTY))) : of(null)))
+      )
+      .subscribe(userWithScore => (this.user = userWithScore));
   }
 
   toggleNavbar(): void {

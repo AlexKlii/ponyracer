@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { UserModel } from './models/user.model';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { WsService } from './ws.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,10 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 export class UserService {
   userEvents = new BehaviorSubject<UserModel | null>(null);
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private wsService: WsService
+  ) {
     this.retrieveUser();
   }
 
@@ -45,5 +49,9 @@ export class UserService {
 
   getCurrentUser(): UserModel | null {
     return this.userEvents.getValue();
+  }
+
+  scoreUpdates(userId: number): Observable<UserModel> {
+    return this.wsService.connect<UserModel>(`/player/${userId}`);
   }
 }
