@@ -15,31 +15,27 @@ import { PonyModel } from '../models/pony.model';
   styleUrls: ['./bet.component.css']
 })
 export class BetComponent {
-  raceModel: RaceModel | null = null;
+  raceModel!: RaceModel;
   betFailed = false;
 
   constructor(
     private raceService: RaceService,
-    route: ActivatedRoute
+    private route: ActivatedRoute
   ) {
-    const id = Number(route.snapshot.paramMap.get('raceId')!);
-    this.raceService.get(id).subscribe(race => (this.raceModel = race));
+    this.raceModel = this.route.snapshot.data['race'];
   }
 
   betOnPony(pony: PonyModel): void {
-    if (this.raceModel) {
-      this.betFailed = false;
-      if (this.raceModel.betPonyId === pony.id) {
-        this.raceService.cancelBet(this.raceModel.id).subscribe({
-          next: () => (this.raceModel!.betPonyId = undefined),
-          error: () => (this.betFailed = true)
-        });
-      } else {
-        this.raceService.bet(this.raceModel.id, pony.id).subscribe({
-          next: (race: RaceModel) => (this.raceModel = race),
-          error: () => (this.betFailed = true)
-        });
-      }
+    if (!this.isPonySelected(pony)) {
+      this.raceService.bet(this.raceModel!.id, pony.id).subscribe({
+        next: race => (this.raceModel = race),
+        error: () => (this.betFailed = true)
+      });
+    } else {
+      this.raceService.cancelBet(this.raceModel!.id).subscribe({
+        next: () => (this.raceModel!.betPonyId = undefined),
+        error: () => (this.betFailed = true)
+      });
     }
   }
 

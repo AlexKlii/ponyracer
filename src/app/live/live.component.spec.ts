@@ -1,5 +1,5 @@
 import { discardPeriodicTasks, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { ActivatedRoute, convertToParamMap, provideRouter } from '@angular/router';
+import { ActivatedRoute, provideRouter } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { Subject, of, EMPTY } from 'rxjs';
 
@@ -20,16 +20,16 @@ describe('LiveComponent', () => {
   } as RaceModel;
 
   beforeEach(() => {
-    raceService = jasmine.createSpyObj<RaceService>('RaceService', ['get', 'live', 'boost']);
-    const activatedRoute = { snapshot: { paramMap: convertToParamMap({ raceId: 1 }) } };
+    raceService = jasmine.createSpyObj<RaceService>('RaceService', ['live', 'boost']);
+    const activatedRoute = { snapshot: { data: { race: { ...race } } } };
     TestBed.configureTestingModule({
       providers: [provideRouter([]), { provide: RaceService, useValue: raceService }, { provide: ActivatedRoute, useValue: activatedRoute }]
     });
   });
 
   it('should initialize the array of positions with an empty array', () => {
-    raceService.get.and.returnValue(of({ ...race }));
     raceService.live.and.returnValue(of([]));
+
     const fixture = TestBed.createComponent(LiveComponent);
     expect(fixture.componentInstance.poniesWithPosition)
       .withContext('poniesWithPosition should be initialized with an empty array')
@@ -38,33 +38,41 @@ describe('LiveComponent', () => {
   });
 
   it('should subscribe to the live observable if the race is PENDING', () => {
-    raceService.get.and.returnValue(of({ ...race }));
     const positions = new Subject<Array<PonyWithPositionModel>>();
     raceService.live.and.returnValue(positions);
 
     const fixture = TestBed.createComponent(LiveComponent);
 
-    expect(raceService.get).toHaveBeenCalledWith(1);
     expect(fixture.componentInstance.raceModel).toEqual(race);
     expect(raceService.live).toHaveBeenCalledWith(1);
   });
 
   it('should subscribe to the live observable if the race is RUNNING', () => {
-    raceService.get.and.returnValue(of({ ...race, status: 'RUNNING' }));
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = { ...race, status: 'RUNNING' };
     const positions = new Subject<Array<PonyWithPositionModel>>();
     raceService.live.and.returnValue(positions);
 
     const fixture = TestBed.createComponent(LiveComponent);
     positions.next([{ id: 1, name: 'Sunny Sunday', color: 'BLUE', position: 0 }]);
 
-    expect(raceService.get).toHaveBeenCalledWith(1);
     expect(fixture.componentInstance.raceModel).toEqual({ ...race, status: 'RUNNING' });
     expect(raceService.live).toHaveBeenCalledWith(1);
     expect(fixture.componentInstance.poniesWithPosition.length).withContext('poniesWithPositions should store the positions').toBe(1);
   });
 
+  it('should not subscribe to the live observable if the race is FINISHED', () => {
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = { ...race, status: 'FINISHED' };
+    raceService.live.and.returnValue(EMPTY);
+
+    const fixture = TestBed.createComponent(LiveComponent);
+
+    expect(fixture.componentInstance.raceModel).toEqual({ ...race, status: 'FINISHED' });
+    expect(raceService.live).not.toHaveBeenCalledWith(1);
+  });
+
   it('should change the race status once the race is RUNNING', () => {
-    raceService.get.and.returnValue(of({ ...race }));
     const positions = new Subject<Array<PonyWithPositionModel>>();
     raceService.live.and.returnValue(positions);
 
@@ -78,7 +86,6 @@ describe('LiveComponent', () => {
   });
 
   it('should switch the error flag if an error occurs', () => {
-    raceService.get.and.returnValue(of({ ...race }));
     const positions = new Subject<Array<PonyWithPositionModel>>();
     raceService.live.and.returnValue(positions);
 
@@ -89,7 +96,6 @@ describe('LiveComponent', () => {
   });
 
   it('should unsubscribe on destruction', () => {
-    raceService.get.and.returnValue(of({ ...race }));
     const positions = new Subject<Array<PonyWithPositionModel>>();
     raceService.live.and.returnValue(positions);
 
@@ -102,7 +108,11 @@ describe('LiveComponent', () => {
   });
 
   it('should tidy things up when the race is over', () => {
-    raceService.get.and.returnValue(of({ ...race, betPonyId: 1 }));
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = {
+      ...race,
+      betPonyId: 1
+    };
     const positions = new Subject<Array<PonyWithPositionModel>>();
     raceService.live.and.returnValue(positions);
 
@@ -129,16 +139,15 @@ describe('LiveComponent', () => {
   });
 
   it('should display the pending race', () => {
-    raceService.get.and.returnValue(
-      of({
-        ...race,
-        ponies: [
-          { id: 1, name: 'Sunny Sunday', color: 'BLUE' },
-          { id: 2, name: 'Pinkie Pie', color: 'GREEN' },
-          { id: 3, name: 'Awesome Fridge', color: 'YELLOW' }
-        ]
-      })
-    );
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = {
+      ...race,
+      ponies: [
+        { id: 1, name: 'Sunny Sunday', color: 'BLUE' },
+        { id: 2, name: 'Pinkie Pie', color: 'GREEN' },
+        { id: 3, name: 'Awesome Fridge', color: 'YELLOW' }
+      ]
+    };
     const positions = new Subject<Array<PonyWithPositionModel>>();
     raceService.live.and.returnValue(positions);
 
@@ -162,17 +171,16 @@ describe('LiveComponent', () => {
   });
 
   it('should display the running race', () => {
-    raceService.get.and.returnValue(
-      of({
-        ...race,
-        status: 'RUNNING',
-        ponies: [
-          { id: 1, name: 'Sunny Sunday', color: 'BLUE' },
-          { id: 2, name: 'Pinkie Pie', color: 'GREEN' },
-          { id: 3, name: 'Awesome Fridge', color: 'YELLOW' }
-        ]
-      })
-    );
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = {
+      ...race,
+      status: 'RUNNING',
+      ponies: [
+        { id: 1, name: 'Sunny Sunday', color: 'BLUE' },
+        { id: 2, name: 'Pinkie Pie', color: 'GREEN' },
+        { id: 3, name: 'Awesome Fridge', color: 'YELLOW' }
+      ]
+    };
     const positions = new Subject<Array<PonyWithPositionModel>>();
     raceService.live.and.returnValue(positions);
 
@@ -201,17 +209,16 @@ describe('LiveComponent', () => {
   });
 
   it('should display the finished race', () => {
-    raceService.get.and.returnValue(
-      of({
-        ...race,
-        ponies: [
-          { id: 1, name: 'Sunny Sunday', color: 'BLUE' },
-          { id: 2, name: 'Pinkie Pie', color: 'GREEN' },
-          { id: 3, name: 'Awesome Fridge', color: 'YELLOW' }
-        ],
-        betPonyId: 1
-      })
-    );
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = {
+      ...race,
+      ponies: [
+        { id: 1, name: 'Sunny Sunday', color: 'BLUE' },
+        { id: 2, name: 'Pinkie Pie', color: 'GREEN' },
+        { id: 3, name: 'Awesome Fridge', color: 'YELLOW' }
+      ],
+      betPonyId: 1
+    };
     const positions = new Subject<Array<PonyWithPositionModel>>();
     raceService.live.and.returnValue(positions);
 
@@ -260,18 +267,17 @@ describe('LiveComponent', () => {
   });
 
   it('should listen to click events on ponies in the template', () => {
-    raceService.get.and.returnValue(
-      of({
-        ...race,
-        status: 'RUNNING',
-        ponies: [
-          { id: 1, name: 'Sunny Sunday', color: 'BLUE' },
-          { id: 2, name: 'Pinkie Pie', color: 'GREEN' },
-          { id: 3, name: 'Awesome Fridge', color: 'YELLOW' }
-        ],
-        betPonyId: 1
-      })
-    );
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = {
+      ...race,
+      status: 'RUNNING',
+      ponies: [
+        { id: 1, name: 'Sunny Sunday', color: 'BLUE' },
+        { id: 2, name: 'Pinkie Pie', color: 'GREEN' },
+        { id: 3, name: 'Awesome Fridge', color: 'YELLOW' }
+      ],
+      betPonyId: 1
+    };
     const positions = new Subject<Array<PonyWithPositionModel>>();
     raceService.live.and.returnValue(positions);
 
@@ -299,7 +305,8 @@ describe('LiveComponent', () => {
   });
 
   it('should emit an event with the pony when a pony is clicked', () => {
-    raceService.get.and.returnValue(of({ ...race }));
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = { ...race };
     raceService.live.and.returnValue(EMPTY);
     const fixture = TestBed.createComponent(LiveComponent);
 
@@ -315,7 +322,8 @@ describe('LiveComponent', () => {
   });
 
   it('should buffer clicks over a second and call the boost method', fakeAsync(() => {
-    raceService.get.and.returnValue(of({ ...race, status: 'RUNNING' }));
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = { ...race, status: 'RUNNING' };
     raceService.boost.and.returnValue(of(undefined));
     raceService.live.and.returnValue(EMPTY);
 
@@ -350,7 +358,8 @@ describe('LiveComponent', () => {
   }));
 
   it('should filter click buffer that are not at least 5', fakeAsync(() => {
-    raceService.get.and.returnValue(of({ ...race, status: 'RUNNING' }));
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = { ...race, status: 'RUNNING' };
     raceService.boost.and.returnValue(of(undefined));
     raceService.live.and.returnValue(EMPTY);
 
@@ -383,7 +392,8 @@ describe('LiveComponent', () => {
   }));
 
   it('should throttle repeated boosts', fakeAsync(() => {
-    raceService.get.and.returnValue(of({ ...race, status: 'RUNNING' }));
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = { ...race, status: 'RUNNING' };
     raceService.boost.and.returnValue(of(undefined));
     raceService.live.and.returnValue(EMPTY);
 
@@ -424,7 +434,8 @@ describe('LiveComponent', () => {
   }));
 
   it('should catch a boost error', fakeAsync(() => {
-    raceService.get.and.returnValue(of({ ...race, status: 'RUNNING' }));
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = { ...race, status: 'RUNNING' };
     const boost = new Subject<void>();
     raceService.boost.and.returnValue(boost);
     raceService.live.and.returnValue(EMPTY);
@@ -461,7 +472,8 @@ describe('LiveComponent', () => {
   }));
 
   it('should use a trackBy method', () => {
-    raceService.get.and.returnValue(of({ ...race, status: 'RUNNING' }));
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.data['race'] = { ...race, status: 'RUNNING' };
     const positions = new Subject<Array<PonyWithPositionModel>>();
     raceService.live.and.returnValue(positions);
     raceService.boost.and.returnValue(of(undefined));

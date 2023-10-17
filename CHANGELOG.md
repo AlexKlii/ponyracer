@@ -1,14 +1,25 @@
 # Changelog
 
-## 0.27.0 (2023-10-16)
+## 0.28.0 (2023-10-17)
 
-### 31 - Protected routes with guards
+### 32 - Resolvers, child routes and redirections
 
-- Implement `loggedInGuard` on `races` routes
+- Implement `FinishedRacesComponent` and `PendingRacesComponent`
+- Implement `raceResolver` and `racesResolver`
+- Update `RacesComponent` to implement the new components
+- Update `LiveComponent` and `BetComponent` to implement resolver
+- Update `app.route.ts` file
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
+
+  ## 0.27.0 (2023-10-16)
+
+  ### 31 - Protected routes with guards
+
+  - Implement `loggedInGuard` on `races` routes
+  - Update e2e and unit test
 
   ## 0.26.0 (2023-10-16)
 
