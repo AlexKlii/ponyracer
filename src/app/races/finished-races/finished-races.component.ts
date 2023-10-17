@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, SlicePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RaceModel } from 'src/app/models/race.model';
 import { RaceComponent } from 'src/app/race/race.component';
+import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   standalone: true,
-  imports: [NgFor, RaceComponent],
+  imports: [NgFor, RaceComponent, NgbPagination, SlicePipe],
   templateUrl: './finished-races.component.html',
   styleUrls: ['./finished-races.component.css']
 })
 export class FinishedRacesComponent {
   races: Array<RaceModel>;
+  page: number = 1;
 
   constructor(route: ActivatedRoute) {
     this.races = route.snapshot.data['races'];

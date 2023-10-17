@@ -3,14 +3,14 @@ import { NgIf } from '@angular/common';
 import { AbstractControl, FormControl, NonNullableFormBuilder, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { AlertComponent } from '../alert/alert.component';
 import { FormControlValidationDirective } from '../form-control-validation.directive';
 import { FormLabelDirective } from '../form-label.directive';
 import { FormLabelValidationDirective } from '../form-label-validation.directive';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, AlertComponent, FormControlValidationDirective, FormLabelDirective, FormLabelValidationDirective],
+  imports: [NgIf, ReactiveFormsModule, NgbAlert, FormControlValidationDirective, FormLabelDirective, FormLabelValidationDirective],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })

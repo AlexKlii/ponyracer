@@ -6,12 +6,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FromNowPipe } from '../from-now.pipe';
 import { PonyComponent } from '../pony/pony.component';
 import { PonyModel } from '../models/pony.model';
-import { AlertComponent } from '../alert/alert.component';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'pr-bet',
   standalone: true,
-  imports: [CommonModule, FromNowPipe, PonyComponent, RouterLink, AlertComponent],
+  imports: [CommonModule, FromNowPipe, PonyComponent, RouterLink, NgbAlert],
   templateUrl: './bet.component.html',
   styleUrls: ['./bet.component.css']
 })

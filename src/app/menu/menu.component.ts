@@ -5,11 +5,12 @@ import { UserService } from '../user.service';
 import { UserModel } from '../models/user.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EMPTY, catchError, of, switchMap, concat } from 'rxjs';
+import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'pr-menu',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, NgbCollapse],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
