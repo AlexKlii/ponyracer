@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 (2023-10-17)
+
+### fix: RaceComponent style
+
+- Update `RaceComponent` to display ponies inline 
+
 ## 1.0.0 (2023-10-17)
 
 ### 39 - Going to production
