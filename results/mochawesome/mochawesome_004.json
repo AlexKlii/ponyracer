@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2023-10-17T08:38:17.502Z",
-    "end": "2023-10-17T08:38:18.545Z",
-    "duration": 1043,
+    "start": "2023-10-17T09:31:35.082Z",
+    "end": "2023-10-17T09:31:36.295Z",
+    "duration": 1213,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "7367225c-bd18-418a-b68a-3b1fd0d8f45e",
+      "uuid": "f06c6a7f-d9bc-48fa-8d65-5553b3f07f3e",
       "title": "",
       "fullFile": "cypress/e2e/races.cy.ts",
       "file": "cypress/e2e/races.cy.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "6b558102-8f26-4694-abd8-74a05f34d218",
+          "uuid": "3bf7a607-152c-4606-ae46-aba689a55792",
           "title": "Races",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should display a list of pending races by default",
               "fullTitle": "Races should display a list of pending races by default",
               "timedOut": null,
-              "duration": 488,
+              "duration": 634,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.visit('/races');\n// should redirect to home page as the user is not logged\ncy.location('pathname')\n    .should('eq', '/')\n    .then(\n// log the user and try again\n() => storeUserInLocalStorage());\ncy.visit('/races');\ncy.location('pathname').should('eq', '/races/pending');\ncy.wait('@getPendingRaces');\ncy.get('h2').should('have.length', 2);\ncy.get('p').should('have.length', 2).and('contain', 'ago');",
               "err": {},
-              "uuid": "96cd3c50-4d7e-4877-abf9-04492c71cd35",
-              "parentUUID": "6b558102-8f26-4694-abd8-74a05f34d218",
+              "uuid": "301f3fbb-f8c8-4492-bb56-02d8502a0d59",
+              "parentUUID": "3bf7a607-152c-4606-ae46-aba689a55792",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "should display ponies",
               "fullTitle": "Races should display ponies",
               "timedOut": null,
-              "duration": 216,
+              "duration": 210,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "storeUserInLocalStorage();\ncy.visit('/races');\ncy.wait('@getPendingRaces');\ncy.get('figure').should('have.length', 10);\ncy.get('img').should('have.length', 10);\ncy.get('figcaption').should('have.length', 10);",
               "err": {},
-              "uuid": "081e9bb8-869f-4fb2-84b2-55de4b715e53",
-              "parentUUID": "6b558102-8f26-4694-abd8-74a05f34d218",
+              "uuid": "96598ba7-5386-4bc6-b5d1-ec383ffa3dfd",
+              "parentUUID": "3bf7a607-152c-4606-ae46-aba689a55792",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "should display a list of finished races in another tab",
               "fullTitle": "Races should display a list of finished races in another tab",
               "timedOut": null,
-              "duration": 308,
+              "duration": 337,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -83,22 +83,22 @@
               "context": null,
               "code": "storeUserInLocalStorage();\ncy.visit('/races/pending');\ncy.wait('@getPendingRaces');\nconst pendingRacesTab = () => cy.get('.nav-tabs .nav-link').first();\nconst finishedRacesTab = () => cy.get('.nav-tabs .nav-link').eq(1);\npendingRacesTab().should('have.class', 'active').and('contain', 'Pending races');\nfinishedRacesTab().should('not.have.class', 'active').and('contain', 'Finished races');\nfinishedRacesTab().click();\ncy.location('pathname').should('eq', '/races/finished');\ncy.wait('@getFinishedRaces');\npendingRacesTab().should('not.have.class', 'active');\nfinishedRacesTab().should('have.class', 'active');\ncy.get('h2').should('have.length', 1);\ncy.get('p').should('have.length', 1).and('contain', 'ago');",
               "err": {},
-              "uuid": "c1157675-50ab-4d48-be92-c6078fb95c82",
-              "parentUUID": "6b558102-8f26-4694-abd8-74a05f34d218",
+              "uuid": "ce280d58-ef94-45df-b55b-1931975428a3",
+              "parentUUID": "3bf7a607-152c-4606-ae46-aba689a55792",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "96cd3c50-4d7e-4877-abf9-04492c71cd35",
-            "081e9bb8-869f-4fb2-84b2-55de4b715e53",
-            "c1157675-50ab-4d48-be92-c6078fb95c82"
+            "301f3fbb-f8c8-4492-bb56-02d8502a0d59",
+            "96598ba7-5386-4bc6-b5d1-ec383ffa3dfd",
+            "ce280d58-ef94-45df-b55b-1931975428a3"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1012,
+          "duration": 1181,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
