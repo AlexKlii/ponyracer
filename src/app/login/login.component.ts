@@ -4,11 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { AlertComponent } from '../alert/alert.component';
+import { FormControlValidationDirective } from '../form-control-validation.directive';
+import { FormLabelDirective } from '../form-label.directive';
+import { FormLabelValidationDirective } from '../form-label-validation.directive';
 
 @Component({
   selector: 'pr-login',
   standalone: true,
-  imports: [NgIf, FormsModule, AlertComponent],
+  imports: [NgIf, FormsModule, AlertComponent, FormControlValidationDirective, FormLabelDirective, FormLabelValidationDirective],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
