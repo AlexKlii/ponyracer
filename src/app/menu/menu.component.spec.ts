@@ -2,6 +2,7 @@ import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { provideRouter, Router, RouterLink } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
+import { NgbCollapseConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { MenuComponent } from './menu.component';
 import { UserService } from '../user.service';
@@ -14,11 +15,14 @@ describe('MenuComponent', () => {
     scoreUpdates: (userId: number) => {}
   } as UserService;
 
-  beforeEach(() =>
+  beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [provideRouter([]), { provide: UserService, useValue: userService }]
-    })
-  );
+    });
+    // turn off the animation for the collapse
+    const collapseConfig = TestBed.inject(NgbCollapseConfig);
+    collapseConfig.animation = false;
+  });
 
   it('should have a `navbarCollapsed` field', () => {
     const fixture = TestBed.createComponent(MenuComponent);
@@ -55,8 +59,8 @@ describe('MenuComponent', () => {
     const navbarCollapsed = element.querySelector('#navbar');
     expect(navbarCollapsed).withContext('No element with the id `#navbar`').not.toBeNull();
     expect(navbarCollapsed.classList)
-      .withContext('The element with the id `#navbar` should have the class `collapse`')
-      .toContain('collapse');
+      .withContext('The element with the id `#navbar` should use the `ngbCollapse` directive')
+      .not.toContain('show');
 
     const button = element.querySelector('button');
     expect(button).withContext('No `button` element to collapse the menu').not.toBeNull();
@@ -65,9 +69,7 @@ describe('MenuComponent', () => {
     fixture.detectChanges();
 
     const navbar = element.querySelector('#navbar');
-    expect(navbar.classList)
-      .withContext('The element with the id `#navbar` should have not the class `collapse` after a click')
-      .not.toContain('collapse');
+    expect(navbar.classList).withContext('The element with the id `#navbar` should use the `ngbCollapse` directive').toContain('show');
   });
 
   it('should use routerLink to navigate', () => {

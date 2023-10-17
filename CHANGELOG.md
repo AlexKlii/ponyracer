@@ -1,15 +1,25 @@
 # Changelog
 
-## 0.31.0 (2023-10-17)
+## 0.32.0 (2023-10-17)
 
-### 35 - Building advanced directives
+### 36 - Integrate with a UI library
 
-- Implement `FormLabelDirective`, `FormControlValidationDirective` and `FormLabelValidationDirective`
+- Implement `ng-bootstrap` UI library
+- Replace `AlertComponent` by `NgbAlert`
+- Implement `NgbPagination` to `FinishedRacesComponent`
+- Implement `NgbCollapse` to `MenuComponent`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.31.0 (2023-10-17)
+
+  ### 35 - Building advanced directives
+
+  - Implement `FormLabelDirective`, `FormControlValidationDirective` and `FormLabelValidationDirective`
+  - Update e2e and unit test
+  
   ## 0.30.0 (2023-10-17)
 
   ### 34 - Building advanced components
