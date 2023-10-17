@@ -3,11 +3,12 @@ import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { AlertComponent } from '../alert/alert.component';
 
 @Component({
   selector: 'pr-login',
   standalone: true,
-  imports: [NgIf, FormsModule],
+  imports: [NgIf, FormsModule, AlertComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })

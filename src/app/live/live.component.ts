@@ -9,11 +9,12 @@ import { PonyComponent } from '../pony/pony.component';
 import { EMPTY, Subject, bufferToggle, catchError, filter, groupBy, interval, map, mergeMap, switchMap, throttleTime } from 'rxjs';
 import { FINISHED_RACE_STATUS, RUNNING_RACE_STATUS } from 'src/constants/status';
 import { FromNowPipe } from '../from-now.pipe';
+import { AlertComponent } from '../alert/alert.component';
 
 @Component({
   selector: 'pr-live',
   standalone: true,
-  imports: [CommonModule, PonyComponent, FromNowPipe],
+  imports: [CommonModule, PonyComponent, FromNowPipe, AlertComponent],
   templateUrl: './live.component.html',
   styleUrls: ['./live.component.css']
 })

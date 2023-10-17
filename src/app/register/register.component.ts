@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { AbstractControl, FormControl, NonNullableFormBuilder, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { AlertComponent } from '../alert/alert.component';
 
 @Component({
   selector: 'pr-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, AlertComponent],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })

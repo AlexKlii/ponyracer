@@ -1,15 +1,22 @@
 # Changelog
 
-## 0.29.0 (2023-10-17)
+## 0.30.0 (2023-10-17)
 
-### 33 - Lazy loading
+### 34 - Building advanced components
 
-- Update routing in `app.routes.ts` file to implement lazy loading
+- Implement `AlertComponent`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.29.0 (2023-10-17)
+
+  ### 33 - Lazy loading
+
+  - Update routing in `app.routes.ts` file to implement lazy loading
+  - Update e2e and unit test
+  
   ## 0.28.0 (2023-10-17)
 
   ### 32 - Resolvers, child routes and redirections
