@@ -1,16 +1,20 @@
 # Changelog
 
-## 0.34.0 (2023-10-17)
+## 1.0.0 (2023-10-17)
 
-### 38 - Performance tricks
-
-- Update `ChangeDetectionStrategy` from `PonyComponent`, `LiveComponent`, `MenuComponent` and `FinishedRacesComponent` to `OnPush`
-- Update `MonyHistoryComponent` to run outside Angular `chart.js`
-- Update e2e and unit test
+### 39 - Going to production
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.34.0 (2023-10-17)
+
+  ### 38 - Performance tricks
+
+  - Update `ChangeDetectionStrategy` from `PonyComponent`, `LiveComponent`, `MenuComponent` and `FinishedRacesComponent` to `OnPush`
+  - Update `MonyHistoryComponent` to run outside Angular `chart.js`
+  - Update e2e and unit test
+  
   ## 0.33.0 (2023-10-17)
 
     ### 37 - Charts in your app
