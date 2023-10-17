@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PonyModel } from '../models/pony.model';
 
@@ -7,7 +7,8 @@ import { PonyModel } from '../models/pony.model';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './pony.component.html',
-  styleUrls: ['./pony.component.css']
+  styleUrls: ['./pony.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PonyComponent {
   @Input({ required: true }) ponyModel!: PonyModel;

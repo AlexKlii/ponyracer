@@ -1,16 +1,24 @@
 # Changelog
 
-## 0.33.0 (2023-10-17)
+## 0.34.0 (2023-10-17)
 
-### 37 - Charts in your app
+### 38 - Performance tricks
 
-- Add `MoneyHistoryModel`
-- Implement `MoneyHistoryComponent` with `chart.js`
+- Update `ChangeDetectionStrategy` from `PonyComponent`, `LiveComponent`, `MenuComponent` and `FinishedRacesComponent` to `OnPush`
+- Update `MonyHistoryComponent` to run outside Angular `chart.js`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.33.0 (2023-10-17)
+
+    ### 37 - Charts in your app
+
+    - Add `MoneyHistoryModel`
+    - Implement `MoneyHistoryComponent` with `chart.js`
+    - Update e2e and unit test
+  
   ## 0.32.0 (2023-10-17)
 
   ### 36 - Integrate with a UI library

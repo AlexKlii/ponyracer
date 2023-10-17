@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, NgZone, ViewChild } from '@angular/core';
 import { Chart, Filler, Legend, LinearScale, LineController, LineElement, PointElement, TimeScale, Tooltip } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import { UserService } from '../user.service';
@@ -15,33 +15,38 @@ export class MoneyHistoryComponent implements AfterViewInit {
 
   moneyChart: Chart | null = null;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private zone: NgZone
+  ) {}
 
   ngAfterViewInit(): void {
     const ctx = this.canvas.nativeElement;
     this.userService.getMoneyHistory().subscribe(history => {
-      this.moneyChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: history.map(event => event.instant),
-          datasets: [
-            {
-              label: 'Money history',
-              backgroundColor: 'rgba(54, 162, 235, 0.2)',
-              borderColor: 'rgba(54, 162, 235, 1)',
-              fill: 'origin',
-              tension: 0.5,
-              data: history.map(event => event.money)
-            }
-          ]
-        },
-        options: {
-          scales: {
-            x: {
-              type: 'time'
+      this.zone.runOutsideAngular(() => {
+        this.moneyChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: history.map(event => event.instant),
+            datasets: [
+              {
+                label: 'Money history',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                fill: 'origin',
+                tension: 0.5,
+                data: history.map(event => event.money)
+              }
+            ]
+          },
+          options: {
+            scales: {
+              x: {
+                type: 'time'
+              }
             }
           }
-        }
+        });
       });
     });
   }
