@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2023-10-17T16:51:35.261Z",
-    "end": "2023-10-17T16:51:35.921Z",
-    "duration": 660,
+    "start": "2023-10-17T17:13:59.345Z",
+    "end": "2023-10-17T17:13:59.910Z",
+    "duration": 565,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "64c02d0f-ac42-4874-88ea-ed78b6f3d914",
+      "uuid": "5458ac43-7253-4c74-b2b0-61d42d159f1e",
       "title": "",
       "fullFile": "cypress/e2e/money-history.cy.ts",
       "file": "cypress/e2e/money-history.cy.ts",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "31e4e8d8-0c12-4e8a-9af6-90fc4d294eb5",
+          "uuid": "61d8c0e8-feb9-4eaf-8f7d-95506c48ef9d",
           "title": "Money history",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should display the money history of the user",
               "fullTitle": "Money history should display the money history of the user",
               "timedOut": null,
-              "duration": 630,
+              "duration": 500,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "storeUserInLocalStorage();\ncy.visit('/users/money/history');\ncy.wait('@history');\ncy.get('h1').should('contain', 'Money history');\ncy.get('canvas').should('exist');",
               "err": {},
-              "uuid": "7951abcb-7f52-47af-bec6-694b9f1aa0ba",
-              "parentUUID": "31e4e8d8-0c12-4e8a-9af6-90fc4d294eb5",
+              "uuid": "3963966d-5ae5-492a-8d4d-f7785fa231e6",
+              "parentUUID": "61d8c0e8-feb9-4eaf-8f7d-95506c48ef9d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "7951abcb-7f52-47af-bec6-694b9f1aa0ba"
+            "3963966d-5ae5-492a-8d4d-f7785fa231e6"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 630,
+          "duration": 500,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
