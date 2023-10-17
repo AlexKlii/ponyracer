@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RaceService } from '../race.service';
@@ -6,7 +6,20 @@ import { RaceModel } from '../models/race.model';
 import { PonyWithPositionModel } from '../models/pony.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PonyComponent } from '../pony/pony.component';
-import { EMPTY, Subject, bufferToggle, catchError, filter, groupBy, interval, map, mergeMap, switchMap, throttleTime } from 'rxjs';
+import {
+  EMPTY,
+  Subject,
+  bufferToggle,
+  catchError,
+  filter,
+  finalize,
+  groupBy,
+  interval,
+  map,
+  mergeMap,
+  switchMap,
+  throttleTime
+} from 'rxjs';
 import { FINISHED_RACE_STATUS, RUNNING_RACE_STATUS } from 'src/constants/status';
 import { FromNowPipe } from '../from-now.pipe';
 import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
@@ -16,7 +29,8 @@ import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
   standalone: true,
   imports: [CommonModule, PonyComponent, FromNowPipe, NgbAlert],
   templateUrl: './live.component.html',
-  styleUrls: ['./live.component.css']
+  styleUrls: ['./live.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LiveComponent {
   raceModel: RaceModel | null = null;
@@ -28,18 +42,23 @@ export class LiveComponent {
 
   constructor(
     private raceService: RaceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ref: ChangeDetectorRef
   ) {
     this.raceModel = this.route.snapshot.data['race'];
 
     if (this.raceModel!.status !== FINISHED_RACE_STATUS) {
       this.raceService
         .live(this.raceModel!.id)
-        .pipe(takeUntilDestroyed())
+        .pipe(
+          takeUntilDestroyed(),
+          finalize(() => this.ref.markForCheck())
+        )
         .subscribe({
           next: positions => {
             this.poniesWithPosition = positions;
             this.raceModel!.status = RUNNING_RACE_STATUS;
+            this.ref.markForCheck();
           },
           error: () => (this.error = true),
           complete: () => {
