@@ -1,19 +1,26 @@
 # Changelog
 
-## 0.28.0 (2023-10-17)
+## 0.29.0 (2023-10-17)
 
-### 32 - Resolvers, child routes and redirections
+### 33 - Lazy loading
 
-- Implement `FinishedRacesComponent` and `PendingRacesComponent`
-- Implement `raceResolver` and `racesResolver`
-- Update `RacesComponent` to implement the new components
-- Update `LiveComponent` and `BetComponent` to implement resolver
-- Update `app.route.ts` file
+- Update routing in `app.routes.ts` file to implement lazy loading
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.28.0 (2023-10-17)
+
+  ### 32 - Resolvers, child routes and redirections
+
+  - Implement `FinishedRacesComponent` and `PendingRacesComponent`
+  - Implement `raceResolver` and `racesResolver`
+  - Update `RacesComponent` to implement the new components
+  - Update `LiveComponent` and `BetComponent` to implement resolver
+  - Update `app.route.ts` file
+  - Update e2e and unit test
+  
   ## 0.27.0 (2023-10-16)
 
   ### 31 - Protected routes with guards
