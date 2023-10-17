@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { AbstractControl, FormControl, NonNullableFormBuilder, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { AlertComponent } from '../alert/alert.component';
+import { FormControlValidationDirective } from '../form-control-validation.directive';
+import { FormLabelDirective } from '../form-label.directive';
+import { FormLabelValidationDirective } from '../form-label-validation.directive';
 
 @Component({
-  selector: 'pr-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, AlertComponent],
+  imports: [NgIf, ReactiveFormsModule, AlertComponent, FormControlValidationDirective, FormLabelDirective, FormLabelValidationDirective],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })

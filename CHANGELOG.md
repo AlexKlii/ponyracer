@@ -1,15 +1,22 @@
 # Changelog
 
-## 0.30.0 (2023-10-17)
+## 0.31.0 (2023-10-17)
 
-### 34 - Building advanced components
+### 35 - Building advanced directives
 
-- Implement `AlertComponent`
+- Implement `FormLabelDirective`, `FormControlValidationDirective` and `FormLabelValidationDirective`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.30.0 (2023-10-17)
+
+  ### 34 - Building advanced components
+
+  - Implement `AlertComponent`
+  - Update e2e and unit test
+  
   ## 0.29.0 (2023-10-17)
 
   ### 33 - Lazy loading
