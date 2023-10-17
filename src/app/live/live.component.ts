@@ -6,7 +6,7 @@ import { RaceModel } from '../models/race.model';
 import { PonyWithPositionModel } from '../models/pony.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PonyComponent } from '../pony/pony.component';
-import { EMPTY, Subject, bufferToggle, catchError, filter, groupBy, interval, map, mergeMap, switchMap, tap, throttleTime } from 'rxjs';
+import { EMPTY, Subject, bufferToggle, catchError, filter, groupBy, interval, map, mergeMap, switchMap, throttleTime } from 'rxjs';
 import { FINISHED_RACE_STATUS, RUNNING_RACE_STATUS } from 'src/constants/status';
 import { FromNowPipe } from '../from-now.pipe';
 
@@ -27,29 +27,27 @@ export class LiveComponent {
 
   constructor(
     private raceService: RaceService,
-    route: ActivatedRoute
+    private route: ActivatedRoute
   ) {
-    const id = +route.snapshot.paramMap.get('raceId')!;
-    this.raceService
-      .get(id)
-      .pipe(
-        tap((race: RaceModel) => (this.raceModel = race)),
-        filter(race => race.status !== FINISHED_RACE_STATUS),
-        switchMap(() => this.raceService.live(id)),
-        takeUntilDestroyed()
-      )
-      .subscribe({
-        next: ponies => {
-          this.poniesWithPosition = ponies;
-          this.raceModel!.status = RUNNING_RACE_STATUS;
-        },
-        error: () => (this.error = true),
-        complete: () => {
-          this.raceModel!.status = FINISHED_RACE_STATUS;
-          this.winners = this.poniesWithPosition.filter(pony => pony.position >= 100);
-          this.betWon = this.winners.some(pony => this.raceModel!.betPonyId === pony.id);
-        }
-      });
+    this.raceModel = this.route.snapshot.data['race'];
+
+    if (this.raceModel!.status !== FINISHED_RACE_STATUS) {
+      this.raceService
+        .live(this.raceModel!.id)
+        .pipe(takeUntilDestroyed())
+        .subscribe({
+          next: positions => {
+            this.poniesWithPosition = positions;
+            this.raceModel!.status = RUNNING_RACE_STATUS;
+          },
+          error: () => (this.error = true),
+          complete: () => {
+            this.raceModel!.status = FINISHED_RACE_STATUS;
+            this.winners = this.poniesWithPosition.filter(pony => pony.position >= 100);
+            this.betWon = this.winners.some(pony => pony.id === this.raceModel!.betPonyId);
+          }
+        });
+    }
 
     this.clickSubject
       .pipe(
