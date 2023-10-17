@@ -1,18 +1,26 @@
 # Changelog
 
-## 0.32.0 (2023-10-17)
+## 0.33.0 (2023-10-17)
 
-### 36 - Integrate with a UI library
+### 37 - Charts in your app
 
-- Implement `ng-bootstrap` UI library
-- Replace `AlertComponent` by `NgbAlert`
-- Implement `NgbPagination` to `FinishedRacesComponent`
-- Implement `NgbCollapse` to `MenuComponent`
+- Add `MoneyHistoryModel`
+- Implement `MoneyHistoryComponent` with `chart.js`
 - Update e2e and unit test
 
 <details>
   <summary>See old changelogs</summary>
 
+  ## 0.32.0 (2023-10-17)
+
+  ### 36 - Integrate with a UI library
+
+  - Implement `ng-bootstrap` UI library
+  - Replace `AlertComponent` by `NgbAlert`
+  - Implement `NgbPagination` to `FinishedRacesComponent`
+  - Implement `NgbCollapse` to `MenuComponent`
+  - Update e2e and unit test
+  
   ## 0.31.0 (2023-10-17)
 
   ### 35 - Building advanced directives
